@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "@nuxtjs/apollo": "^5.0.0-alpha.5",
+    "nuxt": "3.0.0",
+    "sass": "^1.56.1",
+    "sass-loader": "10"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.2",
+    "@mdi/font": "^7.0.96",
+    "@vue/apollo-composable": "^4.0.0-beta.1",
+    "chart.js": "^4.0.1",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "mitt": "^3.0.0",
+    "pinia": "^2.0.27",
+    "vite-plugin-vuetify": "^1.0.0",
+    "vue-chart-3": "^3.1.8",
+    "vue-izitoast": "^1.2.1",
+    "vuetify": "^3.0.2"
+  }
+}

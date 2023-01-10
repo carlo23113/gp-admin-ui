@@ -1,0 +1,13 @@
+.paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 0 1rem 1rem;
+
+    .paginator {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}

@@ -1,0 +1,26 @@
+#login-page {
+  height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+#login-page .login-form {
+  width: 20rem;
+  text-align: center;
+}
+#login-page .login-form #logo {
+  width: 7rem;
+}
+#login-page .login-form #welcome-container {
+  margin: 3rem 0;
+}
+#login-page .login-form #welcome-container p {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+#login-page .login-form #forgot-password {
+  margin-top: 1rem;
+}
+#login-page .login-form #forgot-password #reset-password {
+  color: var(--primary);
+}/*# sourceMappingURL=login.css.map */

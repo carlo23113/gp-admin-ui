@@ -1,0 +1,32 @@
+#login-page {
+    height: 100vh;
+    max-height: 100vh;
+    display: grid;
+    place-content: center;
+
+    .login-form {
+        width: 20rem;
+        text-align: center;
+
+        #logo {
+            width: 7rem;
+        }
+
+        #welcome-container {
+            margin: 3rem 0;
+        }
+
+        #welcome-container p {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        #forgot-password {
+            margin-top: 1rem;
+
+            #reset-password {
+                color: var(--primary);
+            }
+        }
+    }
+}
