@@ -3,9 +3,8 @@
     v-model="drawer"
     :rail="sidebar"
     permanent
-    border="none"
     width="220"
-    :color="theme.global.name.value === 'dark' ? '#0F0E0E' : '#FFFFFF'"
+    color="#E0E0E0"
     style="position: fixed"
   >
     <div id="logo-container">

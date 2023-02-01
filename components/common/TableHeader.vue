@@ -10,10 +10,11 @@
         color="primary"
         hide-details
         rounded
+        style="background-color: white"
       ></v-text-field>
     </div>
     <div>
-      <v-btn color="primary" flat @click="$emit('clicked-new-btn')">
+      <v-btn color="primary" flat @click="create">
         <v-icon class="mr-2">mdi-plus</v-icon> New {{ label }}
       </v-btn>
     </div>
@@ -21,12 +22,28 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   label: string;
 }>();
+
+const emit = defineEmits<{
+  (e: "clicked-new-btn"): void
+}>();
+
+const layoutStore = useLayoutsStore();
+const { currentTitle } = storeToRefs(layoutStore);
+
+const create = () => {
+  currentTitle.value = "Create " + props.label;
+  emit("clicked-new-btn");
+}
 </script>
 
 <script lang="ts">
+import { useLayoutsStore } from '~~/stores';
+import { storeToRefs } from 'pinia';
+import { labeledStatement } from '@babel/types';
+
 export default defineComponent({
   name: "table-header",
 });

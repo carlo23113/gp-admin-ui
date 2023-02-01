@@ -27,6 +27,7 @@ import {
 
 definePageMeta({
   middleware: "auth",
+  keepalive: false
 });
 
 

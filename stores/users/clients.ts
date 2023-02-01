@@ -7,14 +7,27 @@ export const useClientsStore = () => {
     state: () => ({
       clients: [] as Client[],
       paginatorInfo: {} as PaginatorInfo,
-      headers: headers as Header[],
       loading: false as boolean,
+      headers: [
+        {
+          label: "First Name",
+          value: "first_name",
+        },
+        {
+          label: "Last Name",
+          value: "last_name",
+        },
+        {
+          label: "Email",
+          value: "email",
+        },
+      ] as Header[],
     }),
     actions: {
       async fetchClients() {
         this.loading = true;
 
-        const { onResult } = await useQuery(gql`
+        const { onResult, loading } = await useQuery(gql`
           query {
             clients {
               data {
@@ -34,10 +47,11 @@ export const useClientsStore = () => {
           }
         `);
 
+        this.loading = loading.value;
+
         onResult((result: any) => {
           const clients = result.data.clients;
           this.clients = clients.data;
-
           this.paginatorInfo = clients.paginatorInfo;
           this.loading = false;
         });
@@ -49,18 +63,3 @@ export const useClientsStore = () => {
   store.fetchClients();
   return store;
 };
-
-const headers = [
-  {
-    label: "First Name",
-    value: "first_name",
-  },
-  {
-    label: "Last Name",
-    value: "last_name",
-  },
-  {
-    label: "Email",
-    value: "email",
-  },
-];

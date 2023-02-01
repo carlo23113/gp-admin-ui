@@ -7,27 +7,27 @@ import '@mdi/font/css/materialdesignicons.css'
 export default defineNuxtPlugin((nuxtApp) => {
 
     const vuetify = createVuetify({
-        components,
-        directives,
-        theme: {
-            themes: {
-              light: {
-                colors: {
-                  primary: "#1867C0",
-                  secondary: "#5CBBF6",
-                  primaryBgColor: "fafafa",
-                },
-              },
-              dark: {
-                colors: {
-                  background: "#0F0E0E",
-                  primary: "#1867C0",
-                  secondary: "#5CBBF6",
-                },
-              },
+      components,
+      directives,
+      theme: {
+        themes: {
+          light: {
+            colors: {
+              primary: "#1867C0",
+              secondary: "#5CBBF6",
+              primaryBgColor: "ebebeb",
             },
           },
-    })
+          dark: {
+            colors: {
+              background: "#0F0E0E",
+              primary: "#1867C0",
+              secondary: "#5CBBF6",
+            },
+          },
+        },
+      },
+    });
 
     nuxtApp.vueApp.use(vuetify)
 

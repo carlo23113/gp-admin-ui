@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table-component></table-component>
+    <!-- <table-component></table-component> -->
   </div>
 </template>
 

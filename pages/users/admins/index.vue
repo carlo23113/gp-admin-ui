@@ -18,6 +18,7 @@ const { admins, headers, paginatorInfo, loading } = storeToRefs(adminStore);
 definePageMeta({
   middleware: "auth",
 });
+
 </script>
 
 <script lang="ts">

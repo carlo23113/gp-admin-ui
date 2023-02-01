@@ -13,6 +13,10 @@ export default defineNuxtConfig({
     },
   },
   css: ["vuetify/lib/styles/main.css", "~/assets/css/main.css"],
+  components: {
+    global: true,
+    dirs: ["~/components/users/clients"]
+  },
   build: {
     transpile: ["vuetify"],
   },

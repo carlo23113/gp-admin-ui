@@ -17,9 +17,8 @@
 <script setup lang="ts">
 
 const layoutStore = useLayoutsStore();
-const navLinks = layoutStore.navLinks;
+const { navLinks, currentTitle } = storeToRefs(layoutStore);
 const route = useRoute();
-let currentTitle = ref("Dashboard");
 
 onMounted(() => {
   let currentPath = route.path.split("/").reverse()[0];
@@ -43,6 +42,7 @@ import AppBar from "@/components/layouts/AppBar.vue";
 import { onMounted } from "vue";
 import { NavLink } from "@/types/layout";
 import { useLayoutsStore } from "@/stores";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "default",

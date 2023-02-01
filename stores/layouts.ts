@@ -5,6 +5,7 @@ export const useLayoutsStore = defineStore("layout", {
     state: () => ({
         navLinks: navLinks as Array<NavLink>,
         sidebar: false as boolean,
+        currentTitle: "Dashboard"
     }),
     actions: {},
     getters: {},

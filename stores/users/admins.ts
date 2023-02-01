@@ -7,14 +7,27 @@ export const useAdminsStore = () => {
     state: () => ({
       admins: [] as Admin[],
       paginatorInfo: {} as PaginatorInfo,
-      headers: headers as Header[],
-      loading: false as boolean
+      loading: false as boolean,
+      headers: [
+        {
+          label: "First Name",
+          value: "first_name",
+        },
+        {
+          label: "Last Name",
+          value: "last_name",
+        },
+        {
+          label: "Email",
+          value: "email",
+        },
+      ] as Header[],
     }),
     actions: {
       async fetchAdmins() {
-        this.loading = true
+        this.loading = true;
 
-        const { onResult } = await useQuery(gql`
+        const { onResult, loading } = await useQuery(gql`
           query {
             admins {
               data {
@@ -34,10 +47,11 @@ export const useAdminsStore = () => {
           }
         `);
 
+        this.loading = loading.value;
+
         onResult((result: any) => {
           const admins = result.data.admins;
           this.admins = admins.data;
-          
           this.paginatorInfo = admins.paginatorInfo;
           this.loading = false;
         });
@@ -49,18 +63,3 @@ export const useAdminsStore = () => {
   store.fetchAdmins();
   return store;
 };
-
-const headers = [
-  {
-    label: "First Name",
-    value: "first_name",
-  },
-  {
-    label: "Last Name",
-    value: "last_name"
-  },
-  {
-    label: "Email",
-    value: "email",
-  },
-];

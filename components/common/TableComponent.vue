@@ -19,7 +19,7 @@
       <tbody>
         <tr v-for="(d, index) in data" :key="index">
           <td v-for="(header, h) in headers" :key="h">
-            {{ d[header.value] }}
+            {{ d[header.value ? header.value : ''] }}
           </td>
         </tr>
       </tbody>
