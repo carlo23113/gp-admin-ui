@@ -37,8 +37,7 @@ const onClickNav = (data: NavLink) => {
 </script>
 
 <script lang="ts">
-import NavSidebar from "@/components/layouts/NavSidebar.vue";
-import AppBar from "@/components/layouts/AppBar.vue";
+import { NavSidebar, AppBar } from "~~/components/layouts";
 import { onMounted } from "vue";
 import { NavLink } from "@/types/layout";
 import { useLayoutsStore } from "@/stores";

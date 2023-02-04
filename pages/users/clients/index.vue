@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table-header label="Client" @clickedNewBtn="createModal = true"></table-header>
+    <table-header label="Client" @clickedNewBtn="goToCreateClientPage()"></table-header>
     <loader v-if="loading"></loader>
     <v-card elevation="2" v-else>
       <table-component :headers="headers" :data="clients"></table-component>
@@ -23,7 +23,7 @@ definePageMeta({
   middleware: "auth",
 });
 
-const newClient = () => {
+const goToCreateClientPage = () => {
   navigateTo("/users/clients/create")
 }
 </script>

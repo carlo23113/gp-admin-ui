@@ -47,5 +47,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scope>
-@import url(@/assets/css/components/common/paginator/paginator.css);
+
+.paginator-container {
+  @apply tw-flex tw-items-center tw-justify-between tw-mt-6 tw-px-4 tw-pb-4;
+
+  .paginator {
+    @apply tw-flex tw-gap-3 tw-items-center;
+  }
+}
 </style>

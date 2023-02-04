@@ -5,3 +5,9 @@ export interface TextField {
     model: string;
     validations?: any[];
 }
+
+export interface Breadcrumb {
+    title: string;
+    disabled: boolean;
+    link?: string;
+}

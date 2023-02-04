@@ -4,10 +4,11 @@
     :rules="validations"
     :label="label"
     :prepend-inner-icon="prependInnerIcon"
+    :placeholder="placeholder"
     variant="outlined"
     density="compact"
     color="primary"
-    clearable
+    :disabled="disabled"
     @input="$emit('update:textValue', $event.target.value)"
   ></v-text-field>
 </template>
@@ -28,6 +29,10 @@ defineProps({
     type: String,
     required: true,
   },
+  placeholder: {
+    type: String,
+    required: false,
+  },
   prependInnerIcon: {
     type: String,
     required: false,
@@ -42,7 +47,11 @@ defineProps({
   },
   textValue: {
     type: String,
-    required: true,
+    required: false,
   },
+  disabled: {
+    type: Boolean,
+    required: false
+  }
 });
 </script>

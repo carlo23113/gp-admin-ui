@@ -22,6 +22,7 @@ export const useClientsStore = () => {
           value: "email",
         },
       ] as Header[],
+      newClientInfo: {} as Client | any
     }),
     actions: {
       async fetchClients() {

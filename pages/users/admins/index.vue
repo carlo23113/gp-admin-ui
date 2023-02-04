@@ -1,5 +1,6 @@
 <template>
   <div>
+    <table-header label="Admin"></table-header>
     <loader v-if="loading"></loader>
     <v-card v-else>
       <table-component :headers="headers" :data="admins"></table-component>
@@ -22,7 +23,7 @@ definePageMeta({
 </script>
 
 <script lang="ts">
-import { TableComponent, Paginator, Loader } from "@/components/common";
+import { TableComponent, Paginator, Loader, TableHeader } from "@/components/common";
 import { useAdminsStore } from "~~/stores";
 import { storeToRefs } from "pinia";
 

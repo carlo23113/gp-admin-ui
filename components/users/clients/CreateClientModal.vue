@@ -1,97 +1,110 @@
 <template>
-    <v-dialog v-model="dialog" width="800" persistent>
-      <v-card>
-        <v-card-title>
-          <span class="text-h5">User Profile</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal middle name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="[
-                    'Skiing',
-                    'Ice hockey',
-                    'Soccer',
-                    'Basketball',
-                    'Hockey',
-                    'Reading',
-                    'Writing',
-                    'Coding',
-                    'Basejump',
-                  ]"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
-            Close
-          </v-btn>
-          <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
-            Save
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+  <v-dialog v-model="dialog" width="800" persistent>
+    <v-card>
+      <v-card-title> New Client </v-card-title>
+      <v-card-text>
+        <v-container>
+          <v-row>
+            <v-col v-for="field in newClientFields" :key="field.id" cols="12" :md="field.md">
+              <v-text-field
+                :label="field.label"
+                :type="field.type"
+                variant="outlined"
+                density="comfortable"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </v-container>
+        <small>*indicates required field</small>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
+          Close
+        </v-btn>
+        <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
+          Save
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
-const props = defineProps(['activator']);
-const emit = defineEmits(['update:activator']);
+const props = defineProps(["activator"]);
+const emit = defineEmits(["update:activator"]);
+const newClientFields = [
+  {
+    id: 1,
+    label: "First Name*",
+    model: "firstName",
+    type: "text",
+    md: 4,
+    required: true
+  },
+  {
+    id: 2,
+    label: "Middle Name",
+    model: "middleName",
+    type: "text",
+    md: 4,
+    required: false
+  },
+  {
+    id: 3,
+    label: "Last Name*",
+    model: "lastName",
+    type: "text",
+    md: 4,
+    required: false
+  },
+  {
+    id: 4,
+    label: "Email Address*",
+    model: "emailAddress",
+    type: "text",
+    md: 6,
+    required: false
+  },
+  {
+    id: 5,
+    label: "Password*",
+    model: "password",
+    type: "password",
+    md: 6,
+    required: false
+  },
+  {
+    id: 6,
+    label: "Birth Date*",
+    model: "birthDate",
+    type: "date",
+    md: 6,
+    required: false
+  },
+  {
+    id: 7,
+    label: "Age",
+    model: "age",
+    type: "number",
+    md: 6,
+    required: false
+  },
+]
 
 const dialog = computed({
   get() {
     return props.activator;
   },
   set(newValue) {
-    emit('update:activator', newValue);
-  }
+    emit("update:activator", newValue);
+  },
 });
-
 </script>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 export default defineComponent({
   name: "create-client-modal",
 });

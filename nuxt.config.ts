@@ -3,19 +3,23 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/apollo"],
   ssr: false,
   app: {
-    keepalive: true
+    keepalive: true,
   },
   apollo: {
     clients: {
       default: {
-        httpEndpoint: process.env.NUXT_APP_API_BASE_URL + '/graphql',
+        httpEndpoint: process.env.NUXT_APP_API_BASE_URL + "/graphql",
       },
     },
   },
-  css: ["vuetify/lib/styles/main.css", "~/assets/css/main.css"],
+  css: [
+    "vuetify/lib/styles/main.css",
+    "~/assets/css/main.css",
+    "~/assets/css/base.css",
+  ],
   components: {
     global: true,
-    dirs: ["~/components/users/clients"]
+    dirs: ["~/components/users/clients"],
   },
   build: {
     transpile: ["vuetify"],
@@ -31,6 +35,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.NUXT_APP_API_BASE_URL,
+    },
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
     },
   },
 });

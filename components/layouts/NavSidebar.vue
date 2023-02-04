@@ -3,31 +3,38 @@
     v-model="drawer"
     :rail="sidebar"
     permanent
-    width="220"
-    color="#E0E0E0"
-    style="position: fixed"
+    width="225"
+    color="grey-darken-3"
   >
     <div id="logo-container">
-      <v-btn icon size="small" elevation="0" @click="toggleSidebar()">
-        <v-icon size="x-large">mdi-menu</v-icon>
+      <v-btn
+        variant="text"
+        icon
+        size="small"
+        elevation="0"
+        @click="toggleSidebar()"
+      >
+        <v-icon size="x-large" color="white">mdi-menu</v-icon>
       </v-btn>
       <img id="logo" src="@/assets/images/logo.png" />
     </div>
 
-    <v-list density="compact" nav>
+    <v-list color="white" density="compact" nav>
       <v-list-subheader>Menu</v-list-subheader>
       <div v-for="(nav, i) in navLinks" :key="i">
         <v-list-item
           v-if="!nav.children?.length"
+          class="tw-text-white"
           :prepend-icon="nav.icon"
-          :title="nav.title"
           :to="nav.route"
           @click.stop="$emit('click', nav)"
         >
+          <small>{{ nav.title }}</small>
         </v-list-item>
         <v-list-group v-else :value="nav.title">
           <template v-slot:activator="{ props }">
             <v-list-item
+              class="tw-text-white"
               v-bind="props"
               :prepend-icon="nav.icon"
               :title="nav.title"
@@ -35,6 +42,7 @@
           </template>
           <v-list-item
             v-for="(child, index) in nav.children"
+            class="tw-text-white"
             :key="index"
             :title="child.title"
             :to="child.route"
@@ -45,6 +53,7 @@
       </div>
       <v-list-item
         prepend-icon="mdi-logout"
+        class="tw-text-white"
         title="Log Out"
         style="margin-top: auto"
         @click="logout()"
